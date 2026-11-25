@@ -46,6 +46,8 @@ def main() -> None:
     # lean: no trailing newline, no filler words.
     if MONOLOGUE != MONOLOGUE.strip():
         raise ValueError("monologue must not start or end with whitespace")
+    if "  " in MONOLOGUE:
+        raise ValueError("monologue must not contain a double space")
 
     output_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
     output_dir.mkdir(parents=True, exist_ok=True)
